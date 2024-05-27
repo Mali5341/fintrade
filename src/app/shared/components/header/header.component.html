@@ -1,0 +1,76 @@
+<!-- <header>
+  <div class="leftNav">
+    <ul>
+      <li>investment</li>
+      <li>Company</li>
+      <li>Candidates</li>
+    </ul>
+  </div>
+  <div class="rightNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item d-flex">
+        <div class="collapse fade" id="searchForm">
+          <input id="search" type="search" class="form-control border-1 bg-light" placeholder="search" />
+        </div>
+        <a class="nav-link ml-auto" href="#searchForm" data-target="#searchForm" data-toggle="collapse">
+          <i class="mdi mdi-magnify"></i>
+        </a>
+      </li>
+    </ul>
+    <img src="../../assets/Group 1597883151.png" class="bellIcon" routerLink="/">
+    <span class="notificationCounter">1</span>
+    <div class="profilePic" routerLink="/edit-profile">
+
+      <img src="../../assets/Ellipse 3965.png" alt="profile">
+      <div>
+        <span>Admin</span>
+        <p class="m-0">test@gmail.com</p>
+      </div>
+      <i class="fa fa-angle-down" aria-hidden="true"></i>
+    </div>
+  </div>
+
+</header> -->
+
+
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light w-100 ">
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [ngClass]="{ 'show': isExpanded }">
+      <div class="leftNav">
+        <ul>
+          <li>investment</li>
+          <li>Company</li>
+          <li>Candidates</li>
+        </ul>
+      </div>
+      <div class="rightNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item d-flex">
+            <div class="collapse fade" id="searchForm">
+              <input id="search" type="search" class="form-control border-1 bg-light" placeholder="search" />
+            </div>
+            <a class="nav-link ml-auto " href="#searchForm" data-target="#searchForm" data-toggle="collapse">
+              <i class="mdi mdi-magnify"></i>
+            </a>
+          </li>
+        </ul>
+        <img src="../../assets/Group 1597883151.png" class="bellIcon" routerLink="/notification">
+        <span class="notificationCounter">1</span>
+        <div class="profilePic" routerLink="/edit-profile">
+
+          <img src="../../assets/Ellipse 3965.png" alt="profile">
+          <div class="profile_Content">
+            <span>Admin</span>
+            <p class="m-0">test@gmail.com</p>
+          </div>
+          <i class="fa fa-angle-down" aria-hidden="true"></i>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+</header>

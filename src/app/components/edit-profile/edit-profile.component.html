@@ -1,0 +1,46 @@
+<div class="containerBox">
+    <div class="addNewPolicy">
+        <h4>My Profile</h4>
+        <button class="add-new-policy-btn">Edit Profile</button>
+    </div>
+    <div class="editProfileContainer">
+        <span id="profile">Profile</span>
+        <hr>
+        <div class="profilePicBox">
+            <div class="profilePicLabel">Profile Pic</div>
+            <div id="selectProfile">
+                <img src="../../../assets/Error.png" alt="" id="dismissProfile">
+            <img src="../../../assets/adminProfile (1).png" alt="" id="profile">
+            <input type="file" id="inputForSelectFile">
+            </div>
+        </div>
+        <form  id="editProfile-form" [formGroup]="profileData">
+            <div class="fields" id="nameFields">
+                <label for="name">name:</label >
+            
+                <input type="text" placeholder="Enter Your Name" formControlName="name" [ngStyle]="{'border':(name?.touched && name?.invalid)? '1px solid red':'1px solid #dddfe2'}">
+
+            </div>
+            <div class="fields" id="emailFields">
+                <label for="name">Email:</label>
+                <input type="text" placeholder="Enter Your Email" formControlName="email" [ngStyle]="{'border':(email?.invalid && email?.touched)? '1px solid red':'1px solid #dddfe2'}">
+            </div>
+            <div class="fields" id="contactNoFields">
+                <label for="name">Contact No:</label>
+                <input type="number" placeholder="Enter Your Contact NO" formControlName="contactNo" [ngStyle]="{'border':(contactNo?.touched && contactNo?.invalid)? '1px solid red':'1px solid #dddfe2'}">
+            </div>
+            <div class="fields" id="addressFields">
+                <label for="name">Address</label>
+                <input type="text" placeholder="Enter Your Address" formControlName="address" [ngStyle]="{'border':(address?.touched && address?.invalid)?'1px solid red':'1px solid #address'}">
+            </div>
+           
+            <div class="updateProfileBtn" [style.display]="profileData.valid ? 'block' : 'none'">
+                <button id="btn" (click)="submitForm()">Update Profile</button>
+            </div>
+            <div class="updateProfileBtn" [style.display]="profileData.invalid ? 'block' : 'none'">
+<button id="btn" style="background-color: gray;" disabled >First Fill your Form</button>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,151 @@
+<div class="containerBox">
+  <div class="mainDisplay-aside">
+
+    <main class="mainBox">
+
+      <div style="margin-top: 86px; margin-bottom: 12px;" class="d-flex align-items-center justify-content-between ">
+        <h1>Balance overview</h1>
+        <span>latest Update for <b>Today</b></span>
+      </div>
+      <div class="balenceOverView ">
+        <div id="values" class="cards" *ngFor="let data of cardsData">
+          <div class="right">
+            <span>{{data.cardType}}</span>
+            <h5>{{data.balance | currency:'USD'}} </h5>
+          </div>
+          <div class="left w-50">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+        </div>
+      </div>
+      <div id="report-controls" style="margin-top: 43px; margin-bottom: 12px;"
+        class="d-flex align-items-center justify-content-between">
+        <div id="report-buttons" class="checkReport">
+          <button class="report-button" id="daily-button">Daily</button>
+          <button class="report-button" id="weekly-button">Weekly</button>
+          <button class="report-button" id="monthly-button">Monthly</button>
+          <button class="report-button" id="yearly-button">Yearly</button>
+        </div>
+        <div id="investment-status" class="action">
+          <input type="radio" id="invested-radio" name="investmentStatus" value="invested">
+          <label for="invested-radio" style="margin-right: 9px;">Invested</label>
+          <input type="radio" id="released-radio" name="investmentStatus" value="released">
+          <label for="released-radio">Released</label>
+        </div>
+      </div>
+
+
+      <!-- home-page.component.html -->
+      <div class="chart-container">
+        <google-chart style="width: 100%;" [type]="chart.type" [data]="chart.data" [columns]="chart.columnNames"
+          [options]="chart.options"></google-chart>
+
+      </div>
+      <div class="mat-elevation-z8 ">
+        <div class="table-heading d-flex align-items-center justify-content-between">
+          <h4> investments</h4>
+          <div class=" d-flex align-items-center justify-content-center">
+            <ul class="navbar-nav ml-auto mt-2" [ngClass]="{'show': isOpen}">
+              <li class="nav-item d-flex">
+                <div class="collapse fade" id="searchForm">
+                  <input id="search" type="search" class="form-control border-1 bg-light" placeholder="search" />
+                </div>
+                <a class="nav-link ml-auto" href="#searchForm" data-target="#searchForm" data-toggle="collapse">
+                  <i class="mdi mdi-magnify" (click)="toggleSearchBox()"></i>
+                </a>
+              </li>
+            </ul>
+            <span class="CSV" style="text-decoration: underline;"><b>Export CSV</b></span>
+          </div>
+        </div>
+        <table mat-table [dataSource]="dataSource">
+
+          <ng-container matColumnDef="company">
+            <th mat-header-cell *matHeaderCellDef> Company </th>
+            <td mat-cell *matCellDef="let element"> <b>{{element.Company}} </b></td>
+          </ng-container>
+
+          <ng-container matColumnDef="investDate">
+            <th mat-header-cell *matHeaderCellDef> Invest Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.investDate}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="invested">
+            <th mat-header-cell *matHeaderCellDef> invested </th>
+            <td mat-cell *matCellDef="let element"> <b>{{element.invested | currency:'USD'}}</b> </td>
+          </ng-container>
+
+          <ng-container matColumnDef="netValue">
+            <th mat-header-cell *matHeaderCellDef> Net Value </th>
+            <td mat-cell *matCellDef="let element"> <b>{{element.netValue | currency:'USD'}}</b> </td>
+          </ng-container>
+          <ng-container matColumnDef="multiple">
+            <th mat-header-cell *matHeaderCellDef> Multiple </th>
+            <td mat-cell *matCellDef="let element"> {{element.multiple}}x </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <mat-paginator [class.bg-transparent]="true" class="mat-paginator-container" [pageSize]="pageEvent.pageSize"
+          [pageIndex]="pageEvent.pageIndex" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event;">>
+        </mat-paginator>
+      </div>
+
+
+    </main>
+    <div class="activitise">
+      <div id="activity_section" class="activity-section">
+        <h5 id="activity_heading" class="activity-heading"><b>Activity</b></h5>
+        <button id="view_all_button" class="view_all_btn">View all</button>
+      </div>
+
+
+      <mat-card class="mat-card" *ngFor="let data of activityData">
+        <div id="data_container" class="data-container">
+          <div id="first_data" class="data-item">
+            <img id="data_image" src="{{data.companyLogo}}" alt="" class="data-image">
+            <div id="first_data_info" class="data-info">
+              <h6 id="data_title"><b>{{data.companyName}}</b></h6>
+
+              <p id="data_value">{{data.investment}}</p>
+            </div>
+          </div>
+          <div id="second_data_info" class="data-info">
+            <p id="data_amount"><b>{{data.profit | currency:'USD'}}</b></p>
+            <p id="data_change">{{data.average}}%</p>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card class="obligationCard">
+        <div id="activity_section" class="activity-section">
+          <h5 id="activity_heading" class="activity-heading"><b>Obligation</b></h5>
+          <button id="view_all_button" class="view_all_btn">View all</button>
+        </div>
+        <mat-card-content class="obligation_data" *ngFor="let data of obligationData">
+          <div class="progress-Spinner">
+            <div style="height: 102px; width: 70px;">
+              <mat-progress-spinner [color]="color" [mode]="mode" [value]="data.average">
+              </mat-progress-spinner>
+              <div class="spinner-text"> {{ data.average }}%</div>
+            </div>
+            <div id="second_data_info" class="data-info">
+              <h6 id="actions" class="m-0"><b>{{data.obligation}}</b></h6>
+
+              <p id="End_Date">{{data.endDate}}</p>
+            </div>
+          </div>
+          <div id="second_data_info" class="data-info">
+            <p id="data_amount"><b>{{data.Invest|currency:'USD'}}</b></p>
+            <p id="data_change">{{data.profit| currency:'USD'}}</p>
+          </div>
+        </mat-card-content>
+        <button class="buy_obligation_btn">Buy Obligation</button>
+      </mat-card>
+
+    </div>
+  </div>
+
+</div>

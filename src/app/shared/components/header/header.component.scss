@@ -1,0 +1,145 @@
+@import "../../../variable";
+
+header {
+    @include display-properties(center, space-between, row);
+
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    box-shadow: -3px -1px 3px 1px grey;
+    z-index: 100;
+
+    .leftNav {
+        margin-left: 21%;
+        width: 37%;
+
+        ul {
+            @include display-properties(center, space-between, row);
+            width: 100%;
+            list-style: none;
+
+            li {
+                color: #848484;
+                font-size: 15px;
+
+                &:hover,
+                &:focus {
+                    color: black;
+                    text-decoration: underline;
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .navbar-expand-lg {
+        @include display-properties(center, end, row)
+    }
+
+    .rightNav {
+        display: flex;
+        align-items: center;
+        width: 53%;
+    }
+
+    .mdi-magnify::before {
+        content: "\F349";
+        font-size: 26px;
+        color: grey;
+        margin-top: -7px;
+        margin-left: -11px;
+    }
+
+    .bellIcon {
+        padding: 9px;
+        margin-right: -9px;
+    }
+
+    .notificationCounter {
+        position: relative;
+        top: -14px;
+        right: 12px;
+        background-color: $backGround-Color;
+        color: white;
+        padding: 1px 6px;
+        border-radius: 50%;
+        font-size: 11px;
+    }
+
+    .profilePic {
+        width: 224px;
+        height: 48px;
+        margin: 0px 9px;
+        border-radius: 5px;
+        @include display-properties(center, space-between, row);
+
+        padding: 1px 10px;
+
+        span {
+            margin-right: 80px;
+            -webkit-text-stroke: thin;
+        }
+
+        img {
+            width: 34px;
+            height: 34px;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .leftNav {
+            margin-left: 0;
+            margin-top: 2%;
+            width: 95%;
+
+            ul {
+                justify-content: end;
+                width: 100%;
+                flex-direction: column;
+
+                li {
+                    width: 96%;
+                    text-align: end;
+                    margin: 12px 3px;
+                }
+            }
+        }
+
+        .rightNav {
+            width: 95%;
+        }
+    }
+
+    @media (max-width: 448px) {
+        .rightNav {
+            width: 95%;
+            @include display-properties(end, end, column);
+
+            .notificationCounter {
+                top: -48px;
+                right: -4px;
+            }
+
+            .profilePic {
+                width: 180px;
+                height: 40px;
+                padding: 1px 8px;
+                margin: 0px 8px;
+
+                img {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
+
+    }
+}
+
+@media (max-width: 581px) {
+    header {
+        width: 99%;
+    }
+}

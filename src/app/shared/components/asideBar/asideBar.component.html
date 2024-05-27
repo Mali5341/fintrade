@@ -1,0 +1,46 @@
+<i class="menu-icon fa-solid fa-bars" style="z-index: 1000;" (click)="toggleAside()"></i>
+<mat-drawer-container class="aside" style="z-index: 1000;" autosize [ngClass]="{ 'open': isAsideOpen }">
+  <mat-drawer #drawer class="sidenav" mode="side" [opened]="isAsideOpen">
+    <i class="fa-solid fa-x" (click)="toggleAside()"></i>
+
+    <div class="asideBarLogo">
+      <h2 style="color: white;" class="asideBarHeading">Fintrade</h2>
+    </div>
+    <div class="asideBtns" style="margin-top: 35px;">
+      <i class="fa-solid fa-house"></i>
+      <button routerLink="/home-page" class="aside-button">Dashboard</button>
+    </div>
+    <br>
+    <div class="asideBtns">
+      <i class="fa-solid fa-file-contract"></i>
+      <button routerLink="categories" class="aside-button">Documents</button>
+    </div>
+    <br>
+    <div class="asideBtns">
+      <i class="fa-solid fa-message"></i>
+      <button class="aside-button">Messages <span class="messageCounter">5</span></button>
+    </div>
+    <br>
+    <div class="asideBtns">
+      <i class="fa-solid fa-wallet"></i>
+      <button class="aside-button">My Wallets</button>
+    </div>
+    <br>
+    <div class="asideBtns">
+      <i class="fa-solid fa-chart-line"></i>
+      <button class="aside-button">Activity</button>
+    </div>
+    <br>
+    <div class="asideBtns">
+      <i class="fa-solid fa-chart-column"></i>
+      <button class="aside-button">Analytice</button>
+    </div>
+    <br>
+
+    <div class="upgrade-section">
+      <p class="upgrade-title">Upgrade to PRO</p>
+      <p class="upgrade-description">One year support, monthly updates for up to 5 members</p>
+      <button class="upgrade-button">Upgrade</button>
+    </div>
+  </mat-drawer>
+</mat-drawer-container>

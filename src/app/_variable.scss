@@ -1,0 +1,11 @@
+$text-Color: #808D9E;
+$backGround-Color: #7E0FC6;
+$placeholderColor: #94A3B8;
+
+
+@mixin display-properties($align-item, $justify-content, $flex-direction){
+display: flex;
+align-items: $align-item;
+justify-content: $justify-content;
+flex-direction: $flex-direction;
+}
